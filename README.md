@@ -1,30 +1,29 @@
-# Geburtstagskalender
+# 🎂 Geburtstage Köln & Co.
 
-Abonniere den Kalender, um die Geburtstage automatisch in deinen Kalender zu bekommen.
+Ein gemeinsamer Geburtstagskalender für unseren Freundeskreis – inklusive Kids 🥳
 
-## Abonnieren
+## 👉 Abonnieren
 
-**Kalender-URL:**
-```
-https://felixjott.github.io/birthday-calendar/birthdays.ics
-```
+👉 https://felixjott.github.io/birthdays-cologne
 
-### Google Calendar
-Einstellungen → Weitere Kalender → Per URL hinzufügen → URL einfügen
+Einfach öffnen und den Kalender abonnieren – dann bleibst du automatisch up to date.
 
-### Apple Calendar
-Ablage → Neues Kalenderabonnement → URL einfügen
+## ℹ️ Hinweis
 
-### Outlook
-Kalender hinzufügen → Aus dem Internet → URL einfügen
+Bitte den Kalender **abonnieren** und nicht als Datei importieren,  
+sonst kommen spätere Updates nicht bei dir an.
+
+## 📱 Falls es nicht direkt klappt
+
+**iPhone / Mac**  
+→ Link öffnen, Kalender-App übernimmt automatisch
+
+**Google Kalender**  
+→ „Weitere Kalender“ → „Per URL hinzufügen“  
+→ folgende URL einfügen:
+
+https://felixjott.github.io/birthdays-cologne/birthdays.ics
 
 ---
 
-## Daten aktualisieren
-
-```bash
-python3 generate.py
-git add birthdays.csv birthdays.ics
-git commit -m "update birthdays"
-git push
-```
+Viel Spaß – und keine Geburtstage mehr vergessen 🎉
