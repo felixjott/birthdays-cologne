@@ -1,24 +1,30 @@
 #!/usr/bin/env python3
-"""Generate birthdays.ics from birthdays.csv – no external dependencies."""
+"""Generate birthdays.ics from Google Sheet – no external dependencies."""
 
 import csv
 import uuid
+import urllib.request
+import io
 from datetime import date
 
-INPUT_FILE = "birthdays.csv"
+SHEET_ID = "1hbfYdkWaotfH0qGEd_BCVPWZ8xcaWggPP31Yqm7aHJU"
+SHEET_URL = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv"
 OUTPUT_FILE = "birthdays.ics"
 
 
-def load_birthdays(path=INPUT_FILE):
+def load_birthdays():
+    print(f"Fetching data from Google Sheet...")
+    with urllib.request.urlopen(SHEET_URL) as response:
+        content = response.read().decode("utf-8")
+
     entries = []
-    with open(path, newline="", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            name = row["Name"].strip()
-            raw = row["Geburtstag"].strip()
-            if name and raw:
-                day, month = raw.rstrip(".").split(".")
-                entries.append({"name": name, "month": int(month), "day": int(day)})
+    reader = csv.DictReader(io.StringIO(content))
+    for row in reader:
+        name = row["Name"].strip()
+        raw = row["Geburtstag"].strip()
+        if name and raw:
+            day, month = raw.rstrip(".").split(".")
+            entries.append({"name": name, "month": int(month), "day": int(day)})
     return entries
 
 
