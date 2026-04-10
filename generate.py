@@ -52,7 +52,7 @@ def main():
         "BEGIN:VCALENDAR",
         "VERSION:2.0",
         "PRODID:-//Birthday Calendar//felixjott//DE",
-        "X-WR-CALNAME:Geburtstage",
+        "X-WR-CALNAME:🎂 Geburtstage Köln & Co.",
         "X-WR-TIMEZONE:Europe/Berlin",
         "CALSCALE:GREGORIAN",
         "METHOD:PUBLISH",
