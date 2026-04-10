@@ -3,138 +3,308 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>🎉 Geburtstagskalender</title>
+  <title>🎂 Geburtstage Köln & Co.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      color-scheme: light dark;
-      --bg: #f7f8fc;
-      --card: #ffffff;
-      --text: #1f2430;
-      --muted: #6b7280;
-      --primary: #4f46e5;
-      --primary-hover: #4338ca;
-      --border: #e5e7ef;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #0f1115;
-        --card: #171a21;
-        --text: #f3f4f6;
-        --muted: #a1a7b3;
-        --primary: #7c82ff;
-        --primary-hover: #6a70f5;
-        --border: #2b3140;
-      }
+    :root {
+      --cream: #FDF7EF;
+      --paper: #F5EDE0;
+      --ink: #241A10;
+      --ink-muted: #7A6550;
+      --terra: #D95F3B;
+      --terra-dark: #B84D2C;
+      --border: #E3D5C3;
+      --white: #FFFCF8;
     }
 
     body {
-      margin: 0;
-      font-family: Inter, system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      display: grid;
-      place-items: center;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
       min-height: 100vh;
-      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      position: relative;
+      overflow-x: hidden;
     }
 
-    .card {
-      max-width: 640px;
+    /* Subtle dot grid background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(circle, var(--border) 1px, transparent 1px);
+      background-size: 28px 28px;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    /* Decorative blobs */
+    body::after {
+      content: '';
+      position: fixed;
+      top: -120px;
+      right: -120px;
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, #F2C4A0 0%, transparent 70%);
+      opacity: 0.35;
+      pointer-events: none;
+      border-radius: 50%;
+    }
+
+    .blob-2 {
+      position: fixed;
+      bottom: -100px;
+      left: -100px;
+      width: 360px;
+      height: 360px;
+      background: radial-gradient(circle, #D9A87A 0%, transparent 70%);
+      opacity: 0.25;
+      pointer-events: none;
+      border-radius: 50%;
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 580px;
       width: 100%;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 32px;
+      animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Header */
+    .header {
       text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--terra);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .eyebrow::before,
+    .eyebrow::after {
+      content: '';
+      width: 32px;
+      height: 1px;
+      background: var(--terra);
+      opacity: 0.5;
     }
 
     h1 {
-      margin-bottom: 12px;
-      font-size: 32px;
+      font-family: 'Fraunces', serif;
+      font-size: clamp(42px, 10vw, 68px);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 20px;
     }
 
-    p {
-      color: var(--muted);
+    h1 em {
+      font-style: italic;
+      font-weight: 300;
+      color: inherit;
+    }
+
+    .subtitle {
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--ink-muted);
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .cities {
+      margin-top: 16px;
+      font-size: 12px;
+      color: var(--ink-muted);
+      opacity: 0.6;
+      letter-spacing: 0.04em;
+    }
+
+    /* Main card */
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px;
+      box-shadow: 0 2px 0 var(--border), 0 8px 32px rgba(36,26,16,0.06);
+      animation: rise 0.7s 0.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .cta-block {
+      text-align: center;
       margin-bottom: 24px;
-      font-size: 18px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
     }
 
     .btn {
-      display: inline-block;
-      padding: 14px 22px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 18px 36px;
       border-radius: 999px;
-      background: var(--primary);
-      color: white;
+      background: var(--terra);
+      color: #fff;
       text-decoration: none;
+      font-family: 'DM Sans', sans-serif;
       font-weight: 600;
-      transition: 0.15s ease;
+      font-size: 17px;
+      letter-spacing: 0.01em;
+      transition: transform 0.12s, box-shadow 0.12s;
+      box-shadow: 4px 4px 0 var(--terra-dark);
     }
 
     .btn:hover {
-      background: var(--primary-hover);
-      transform: translateY(-1px);
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 var(--terra-dark);
     }
+
+    .btn:active {
+      transform: translate(0, 0);
+      box-shadow: 4px 4px 0 var(--terra-dark);
+    }
+
+    .btn-icon { font-size: 18px; }
 
     .hint {
       margin-top: 20px;
-      font-size: 14px;
-      color: var(--muted);
+      font-size: 12px;
+      color: var(--ink-muted);
     }
 
-    .box {
-      margin-top: 28px;
-      padding: 16px;
-      border-radius: 16px;
-      border: 1px solid var(--border);
-      text-align: left;
-      font-size: 14px;
+    /* Fallback instructions */
+    .fallback-title {
+      font-family: 'Fraunces', serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 14px;
+    }
+
+    .platform {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .platform-row {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .platform-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+      padding-top: 2px;
+    }
+
+    .platform-desc {
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.5;
     }
 
     code {
-      display: block;
-      margin-top: 8px;
-      padding: 8px;
-      border-radius: 10px;
-      background: rgba(127,127,127,0.1);
-      font-size: 13px;
-      overflow-x: auto;
+      display: inline-block;
+      margin-top: 6px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      background: var(--paper);
+      border: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--ink);
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      word-break: break-all;
+      width: 100%;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 28px;
+      font-size: 12px;
+      color: var(--ink-muted);
+      opacity: 0.7;
+      animation: rise 0.7s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    @media (max-width: 480px) {
+      .card { padding: 24px 20px; }
+      .platform-row { grid-template-columns: 1fr; gap: 4px; }
     }
   </style>
 </head>
 
 <body>
-  <div class="card">
-    <h1>🎂 Geburtstage Köln &amp; Co.</h1>
-    
-    <p>
-      Alle Geburtstage unseres großen Freundeskreises inklusive Kids –  
-      einfach abonnieren und einander kleine Freuden machen! 🥳
-    </p>
+  <div class="blob-2"></div>
 
-    <a class="btn" href="webcal://felixjott.github.io/birthdays-cologne/birthdays.ics">
-      Kalender abonnieren
-    </a>
-
-    <div class="hint">
-      Öffnet sich direkt in deiner Kalender-App
+  <div class="wrap">
+    <div class="header">
+      <div class="eyebrow">Ahüüüt & Families</div>
+      <h1>Alle Geburtstage,<br><em>ein Kalender.</em></h1>
+      <p class="subtitle">Alle Geburtstage inklusive Kids, ob in Rösrath, Aachen, Wolfsburg, Köln, Bremen, Brühl, München oder Düsseldorf – einfach abonnieren und einander kleine Freuden machen! 🥳</p>
     </div>
 
-    <div class="box">
-      <strong>Falls es nicht automatisch klappt:</strong><br><br>
+    <div class="card">
+      <div class="cta-block">
+<a class="btn" href="webcal://felixjott.github.io/birthdays-cologne/birthdays.ics">
+          <span class="btn-icon">🎂</span>
+          Kalender abonnieren
+        </a>
+        <p class="hint">Öffnet direkt in deiner Kalender-App · Updates kommen automatisch</p>
+      </div>
 
-      <strong>iPhone / Mac:</strong><br>
-      Link einfach öffnen → Kalender-App übernimmt<br><br>
-
-      <strong>Google Kalender:</strong><br>
-      „Weitere Kalender“ → „Per URL hinzufügen“
-      <code>https://felixjott.github.io/birthdays-cologne/birthdays.ics</code>
+      <p class="fallback-title">Klappt's nicht automatisch?</p>
+      <div class="platform">
+        <div class="platform-row">
+          <span class="platform-name">iPhone & Mac</span>
+          <span class="platform-desc">Link oben tippen – Kalender-App fragt direkt nach dem Abonnement.</span>
+        </div>
+        <div class="platform-row">
+          <span class="platform-name">Google Cal</span>
+          <span class="platform-desc">„Weitere Kalender" → „Per URL hinzufügen"</span>
+        </div>
+        <div class="platform-row">
+          <span class="platform-name">Outlook</span>
+          <span class="platform-desc">Kalender hinzufügen → Aus dem Internet → URL oben einfügen.</span>
+        </div>
+        <div class="platform-row" style="grid-template-columns:1fr;">
+          <code>https://felixjott.github.io/birthdays-cologne/birthdays.ics</code>
+        </div>
+      </div>
     </div>
 
-    <div class="hint">
-      Wichtig: Nicht als Datei importieren – sonst gibt’s keine Updates 🙂
-    </div>
+    <p class="footer">Bitte nicht als Datei importieren – dann gibt's keine automatischen Updates.</p>
   </div>
 </body>
 </html>
