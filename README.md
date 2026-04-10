@@ -1,27 +1,33 @@
-## 🎂 Geburtstage Köln & Co.
+# 🎂 Geburtstage Köln & Co.
 
-Alle Geburtstage unseres großen Freundeskreises inklusive Kids –  
-einfach abonnieren und einander kleine Freuden machen! 🥳
+Ahüüüt & Families – alle Geburtstage inklusive Kids, ob in Rösrath, Aachen, Wolfsburg, Köln, Bremen, Brühl, München oder Düsseldorf.
 
-👉 https://felixjott.github.io/birthdays-cologne
-
----
-
-**Hinweis:**  
-Bitte abonnieren (nicht importieren), sonst kommen keine Updates an.
+👉 **https://felixjott.github.io/birthdays-cologne**
 
 ---
 
-**Falls es nicht direkt klappt**
+## Abonnieren
 
-iPhone / Mac  
-→ Link öffnen, Kalender-App übernimmt
+Seite öffnen und auf „Kalender abonnieren" klicken – öffnet direkt in der Kalender-App. Updates kommen automatisch.
 
-Google Kalender  
-→ „Weitere Kalender“ → „Per URL hinzufügen“  
-→ https://felixjott.github.io/birthdays-cologne/birthdays.ics
+**iPhone & Mac** – Link tippen, Kalender-App fragt direkt nach dem Abonnement.
+
+**Google Kalender** – „Weitere Kalender" → „Per URL hinzufügen":
+```
+https://felixjott.github.io/birthdays-cologne/birthdays.ics
+```
+
+**Outlook** – Kalender hinzufügen → Aus dem Internet → URL einfügen.
+
+Bitte nicht als Datei importieren – dann gibt's keine automatischen Updates.
 
 ---
 
-Viel Spaß damit – und auf viele kleine Geburtstagsfreuden! 🎉  
-Felix
+## Daten aktualisieren
+
+Geburtstage werden aus einem Google Sheet geladen. Täglich um 07:00 Uhr prüft GitHub Actions auf Änderungen und aktualisiert die ICS-Datei automatisch.
+
+```bash
+python3 generate.py  # lokal generieren
+git add birthdays.ics && git commit -m "update" && git push
+```
