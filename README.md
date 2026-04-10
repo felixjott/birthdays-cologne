@@ -20,3 +20,8 @@ iPhone / Mac
 Google Kalender  
 → „Weitere Kalender“ → „Per URL hinzufügen“  
 → https://felixjott.github.io/birthdays-cologne/birthdays.ics
+
+---
+
+Viel Spaß damit – und auf viele kleine Geburtstagsfreuden! 🎉  
+Felix
