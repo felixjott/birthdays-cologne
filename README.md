@@ -1,29 +1,22 @@
-# 🎂 Geburtstage Köln & Co.
+## 🎂 Geburtstage Köln & Co.
 
-Ein gemeinsamer Geburtstagskalender für unseren Freundeskreis – inklusive Kids 🥳
-
-## 👉 Abonnieren
+Alle Geburtstage unseres großen Freundeskreises inklusive Kids –  
+einfach abonnieren und einander kleine Freuden machen! 🥳
 
 👉 https://felixjott.github.io/birthdays-cologne
 
-Einfach öffnen und den Kalender abonnieren – dann bleibst du automatisch up to date.
+---
 
-## ℹ️ Hinweis
-
-Bitte den Kalender **abonnieren** und nicht als Datei importieren,  
-sonst kommen spätere Updates nicht bei dir an.
-
-## 📱 Falls es nicht direkt klappt
-
-**iPhone / Mac**  
-→ Link öffnen, Kalender-App übernimmt automatisch
-
-**Google Kalender**  
-→ „Weitere Kalender“ → „Per URL hinzufügen“  
-→ folgende URL einfügen:
-
-https://felixjott.github.io/birthdays-cologne/birthdays.ics
+**Hinweis:**  
+Bitte abonnieren (nicht importieren), sonst kommen keine Updates an.
 
 ---
 
-Viel Spaß – und keine Geburtstage mehr vergessen 🎉
+**Falls es nicht direkt klappt**
+
+iPhone / Mac  
+→ Link öffnen, Kalender-App übernimmt
+
+Google Kalender  
+→ „Weitere Kalender“ → „Per URL hinzufügen“  
+→ https://felixjott.github.io/birthdays-cologne/birthdays.ics
