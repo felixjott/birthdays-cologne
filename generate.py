@@ -7,6 +7,8 @@ import urllib.request
 import io
 from datetime import date
 
+_UUID_NAMESPACE = uuid.UUID("a1b2c3d4-e5f6-7890-abcd-ef1234567890")
+
 SHEET_ID = "1hbfYdkWaotfH0qGEd_BCVPWZ8xcaWggPP31Yqm7aHJU"
 SHEET_URL = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv"
 OUTPUT_FILE = "birthdays.ics"
@@ -29,7 +31,7 @@ def load_birthdays():
 
 
 def make_event(name, month, day):
-    uid = str(uuid.uuid4())
+    uid = str(uuid.uuid5(_UUID_NAMESPACE, f"{name}:{month:02d}{day:02d}"))
     # Base date for the recurring event
     dtstart = f"{date.today().year}{month:02d}{day:02d}"
     dtend_date = date(date.today().year, month, day)
